@@ -23,8 +23,8 @@ const securityHeaders = [
   },
   {
     key: 'Content-Security-Policy',
-    // Tambahkan 'unsafe-inline' pada script-src agar Next.js bisa berjalan
-    value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:;" 
+    // Kita tambahkan font-src dan https: pada style-src
+    value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' data: https:;" 
   }
 ];
 
