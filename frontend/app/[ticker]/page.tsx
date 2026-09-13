@@ -313,7 +313,8 @@ function OverviewTab({ data, isLoading }: { data: any; isLoading: boolean }) {
                 <Tooltip
                   contentStyle={{ background: "#171717", border: "1px solid #334155", borderRadius: "8px", fontSize: "11px" }}
                   labelStyle={{ color: "#94a3b8" }}
-                  formatter={(value: any, name: string) => [fmtRp(Number(value)), name]}
+                  // Perbaikan TS: name bisa string | undefined
+                  formatter={(value: any, name: string | undefined) => [fmtRp(Number(value)), name ?? ""]}
                 />
                 <Bar
                   yAxisId="left"
