@@ -1,11 +1,5 @@
 import type { NextConfig } from "next";
 
-const nextConfig: NextConfig = {
-  
-};
-
-export default nextConfig;
-
 const securityHeaders = [
   {
     key: 'X-Frame-Options',
@@ -29,13 +23,13 @@ const securityHeaders = [
   },
   {
     key: 'Content-Security-Policy',
-    value: "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:;" // Sesuaikan jika memuat script/style dari pihak ketiga
+    // Tambahkan 'unsafe-inline' pada script-src agar Next.js bisa berjalan
+    value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:;" 
   }
 ];
 
-module.exports = {
+const nextConfig: NextConfig = {
   poweredByHeader: false, 
-  
   async headers() {
     return [
       {
@@ -45,3 +39,5 @@ module.exports = {
     ];
   },
 };
+
+export default nextConfig;
