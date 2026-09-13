@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import { SignalBadge } from "./SignalBadge";
+// Perbaikan path import: naik 3 tingkat dari app/components/bandarmology/ ke components/home/
+import { SignalBadge } from "../../../components/home/SignalBadge";
 
 export const ScreenerTab: React.FC = () => {
   const [filterType, setFilterType] = useState<"all" | "accumulation" | "divergence">("all");
