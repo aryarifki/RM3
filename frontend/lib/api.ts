@@ -27,7 +27,6 @@ export async function fetchWithCache<T>(
       // Penanganan khusus jika token expired / unauthorized
       if (res.status === 401 || res.status === 403) {
         console.warn(`[API Auth Error] Token invalid/expired untuk path: ${path}`);
-        // Anda bisa menambahkan logika trigger logout di sini jika diperlukan
         return null; 
       }
 
@@ -45,3 +44,49 @@ export async function fetchWithCache<T>(
     return null;
   }
 }
+
+// ── Tambahan: Fetcher untuk SWR (Broker & Stock History) ──
+
+export const fetchBrokerLatest = async (ticker: string) => {
+  try {
+    const res = await fetch(`${API_BASE_URL}/api/bandar/latest/${ticker}`);
+    if (!res.ok) return null;
+    return res.json();
+  } catch (e) {
+    console.error("Gagal fetch broker latest:", e);
+    return null;
+  }
+};
+
+export const fetchBrokerSummary = async (ticker: string, days: number) => {
+  try {
+    const res = await fetch(`${API_BASE_URL}/api/bandar/summary/${ticker}?days=${days}`);
+    if (!res.ok) return null;
+    return res.json();
+  } catch (e) {
+    console.error("Gagal fetch broker summary:", e);
+    return null;
+  }
+};
+
+export const fetchStockHistory = async (ticker: string, limit: number) => {
+  try {
+    const res = await fetch(`${API_BASE_URL}/api/stocks/history/${ticker}?limit=${limit}`);
+    if (!res.ok) return null;
+    return res.json();
+  } catch (e) {
+    console.error("Gagal fetch stock history:", e);
+    return null;
+  }
+};
+
+export const fetchBrokerHistory = async (ticker: string, days: number) => {
+  try {
+    const res = await fetch(`${API_BASE_URL}/api/bandar/history/${ticker}?days=${days}`);
+    if (!res.ok) return null;
+    return res.json();
+  } catch (e) {
+    console.error("Gagal fetch broker history:", e);
+    return null;
+  }
+};
