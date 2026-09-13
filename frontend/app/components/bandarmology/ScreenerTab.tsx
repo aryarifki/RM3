@@ -110,7 +110,7 @@ export const ScreenerTab: React.FC = () => {
                   {row.ticker}
                 </td>
                 <td className="px-4 py-3">
-                  <SignalBadge signal={row.signal} size="sm" />
+                  <SignalBadge signal={row.signal} />
                 </td>
                 <td className="px-4 py-3 text-right font-semibold text-slate-200">
                   {row.score.toFixed(1)}%
