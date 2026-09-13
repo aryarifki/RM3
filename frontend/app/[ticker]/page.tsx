@@ -237,6 +237,7 @@ function OverviewTab({ data, isLoading }: { data: any; isLoading: boolean }) {
                 <Tooltip
                   contentStyle={{ background: "#171717", border: "1px solid #334155", borderRadius: "8px", fontSize: "11px" }}
                   labelStyle={{ color: "#94a3b8" }}
+                  formatter={(value: any, name: any) => [fmtRp(Number(value)), String(name)]}
                 />
                 <Bar yAxisId="right" dataKey="volume" fill="#334155" opacity={0.3} />
                 <Line yAxisId="left" type="monotone" dataKey="close" stroke="#f59e0b" strokeWidth={2} dot={false} />
