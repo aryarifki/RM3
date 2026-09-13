@@ -54,7 +54,7 @@ export default function MainChart() {
       wickDownColor: "#ef4444",
     });
     candleSeries.setData(
-      priceData.data.map(function (b) {
+      priceData.data.map(function (b: any) {
         return {
           time: b.date,
           open: b.open ?? 0,
@@ -74,7 +74,7 @@ export default function MainChart() {
       scaleMargins: { top: 0.8, bottom: 0 },
     });
     volumeSeries.setData(
-      priceData.data.map(function (b) {
+      priceData.data.map(function (b: any) {
         return {
           time: b.date,
           value: b.volume ?? 0,
@@ -90,7 +90,7 @@ export default function MainChart() {
         priceFormat: { type: "volume" },
       });
       flowSeries.setData(
-        flowData.data.map(function (r) {
+        flowData.data.map(function (r: any) {
           const v = r.foreign_net_broker ?? 0;
           return {
             time: r.date,
