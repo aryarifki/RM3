@@ -20,12 +20,8 @@ const securityHeaders = [
   {
     key: 'Permissions-Policy',
     value: 'camera=(), microphone=(), geolocation=()' 
-  },
-  {
-    key: 'Content-Security-Policy',
-    // Kita tambahkan font-src dan https: pada style-src
-    value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' data: https:;" 
   }
+  
 ];
 
 const nextConfig: NextConfig = {
