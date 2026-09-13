@@ -12,19 +12,21 @@ const fetcher = async (url: string) => {
 };
 
 export function useForeignFlowAnalytics(ticker: string, lookbackDays: number = 60) {
-  const { data, error, isLoading } = useSWR(
+  const { data, error, isLoading, isValidating } = useSWR(
     ticker ? `/api/foreign-flow/${ticker}?lookback_days=${lookbackDays}` : null,
     fetcher,
     {
       revalidateOnFocus: false, 
       dedupingInterval: 60000,  
-      shouldRetryOnError: false 
+      shouldRetryOnError: false,
+      keepPreviousData: true // Pertahankan data lama saat ganti window
     }
   );
 
   return {
     data,
-    isLoading,
+    isLoading, // True hanya saat pertama kali load (belum ada data sama sekali)
+    isFetching: isValidating, // True saat ada proses fetch di background (untuk ganti window)
     isError: error
   };
 }
