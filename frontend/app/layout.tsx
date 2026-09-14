@@ -21,27 +21,28 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-[#08090C] text-white antialiased`}>
-        {/* GLOBAL TOP NAVIGATION */}
-        <nav className="flex items-center justify-between px-4 py-3 border-b border-white/[0.05] bg-[#0F1117] sticky top-0 z-40">
+      <body className={`${inter.className} bg-[var(--md-sys-color-surface)] text-[var(--md-sys-color-on-surface)] antialiased`}>
+        {/* GLOBAL TOP NAVIGATION (M3 Top App Bar Style) */}
+        <nav className="flex items-center justify-between px-4 py-3 border-b border-[var(--md-sys-color-outline-variant)] bg-[var(--md-sys-color-surface)] sticky top-0 z-40">
           <div className="flex items-center gap-2.5">
             <SidebarToggle />
             <div className="relative w-5 h-5">
               <Image src="/logo.png" alt="InvestOwl" fill sizes="20px" className="object-contain" priority />
             </div>
-            <span className="text-sm font-bold tracking-[0.15em] uppercase text-orange-400">InvestOwl</span>
+            {/* Teks logo tetap dipertahankan dengan warna brand, tetapi tanpa kesan terminal */}
+            <span className="text-sm font-bold uppercase tracking-wider text-orange-400">InvestOwl</span>
           </div>
           <div className="flex items-center gap-3">
-             <span className="text-[10px] font-medium text-neutral-500 hidden sm:block">Dashboard Bandarmologi IDX</span>
+             <span className="text-xs font-medium text-[var(--md-sys-color-on-surface-variant)] hidden sm:block">Dashboard Bandarmologi</span>
              <RefreshButton />
           </div>
         </nav>
         
         {/* KONTEN UTAMA DENGAN SIDEBAR GLOBAL */}
-        <div className="flex pb-16 min-h-screen">
+        <div className="flex pb-20 min-h-screen">
             <Sidebar />
             
-            {/* Area Halaman (Dashboard, Foreign, dll) */}
+            {/* Area Halaman */}
             <div className="flex-1 min-w-0">
                 {children}
             </div>
