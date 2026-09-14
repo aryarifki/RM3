@@ -2,56 +2,116 @@
 
 @layer base {
   :root {
-    --bg-primary: #08090c;
-    --bg-surface: #0f1117;
-    --bg-surface-elevated: #161922;
-    --border-subtle: rgba(255, 255, 255, 0.07);
-    --border-highlight: rgba(255, 255, 255, 0.15);
-    --text-primary: #f1f5f9;
-    --text-secondary: #94a3b8;
-    --text-muted: #64748b;
+    /* ========================================================
+       MATERIAL 3 EXPRESSIVE - DARK THEME TOKENS
+       Referensi: MD3 Color System (Baseline Dark)
+       ======================================================== */
+    --md-sys-color-primary: #D0BCFF;
+    --md-sys-color-on-primary: #381E72;
+    --md-sys-color-primary-container: #4F378B;
+    --md-sys-color-on-primary-container: #EADDFF;
+    
+    --md-sys-color-secondary: #CCC2DC;
+    --md-sys-color-on-secondary: #332D41;
+    --md-sys-color-secondary-container: #4A4458;
+    --md-sys-color-on-secondary-container: #E8DEF8;
+    
+    --md-sys-color-tertiary: #EFB8C8;
+    --md-sys-color-on-tertiary: #492532;
+    --md-sys-color-tertiary-container: #633B48;
+    --md-sys-color-on-tertiary-container: #FFD8E4;
+    
+    --md-sys-color-error: #F2B8B5;
+    --md-sys-color-on-error: #601410;
+    --md-sys-color-error-container: #8C1D18;
+    --md-sys-color-on-error-container: #F9DEDC;
+    
+    /* MD3 Tonal Surfaces (Pengganti Shadow/Elevasi) */
+    --md-sys-color-surface: #141218;
+    --md-sys-color-on-surface: #E6E0E9;
+    --md-sys-color-on-surface-variant: #CAC4D0;
+    --md-sys-color-surface-container-lowest: #0F0D13;
+    --md-sys-color-surface-container-low: #1D1B20;
+    --md-sys-color-surface-container: #211F26;
+    --md-sys-color-surface-container-high: #2B2930;
+    --md-sys-color-surface-container-highest: #36343B;
+    
+    --md-sys-color-outline: #938F99;
+    --md-sys-color-outline-variant: #49454F;
+    
+    /* ========================================================
+       MATERIAL 3 EXPRESSIVE - SHAPE TOKENS
+       ======================================================== */
+    --md-sys-shape-corner-none: 0px;
+    --md-sys-shape-corner-extra-small: 4px;
+    --md-sys-shape-corner-small: 8px;
+    --md-sys-shape-corner-medium: 12px;
+    --md-sys-shape-corner-large: 16px;
+    --md-sys-shape-corner-extra-large: 28px;
+    --md-sys-shape-corner-full: 9999px;
+
+    /* ========================================================
+       WARNA FINANSIAL RE-TRACKER (DIPERTAHANKAN 100%)
+       Wajib dipertahankan agar warna visualisasi data saham
+       dan ECharts tidak berantakan/terdampak.
+       ======================================================== */
     --acc-green: #10b981;
     --dist-red: #f43f5e;
     --foreign-blue: #3b82f6;
     --local-purple: #8b5cf6;
     --gov-amber: #f59e0b;
+
+    /* ========================================================
+       LEGACY ALIASING (SAFEGUARD)
+       Memetakan warna lama ke token M3 agar UI yang belum 
+       dimigrasi tetap berjalan tanpa error.
+       ======================================================== */
+    --bg-primary: var(--md-sys-color-surface);
+    --bg-surface: var(--md-sys-color-surface-container);
+    --bg-surface-elevated: var(--md-sys-color-surface-container-high);
+    --border-subtle: var(--md-sys-color-outline-variant);
+    --border-highlight: var(--md-sys-color-outline);
+    --text-primary: var(--md-sys-color-on-surface);
+    --text-secondary: var(--md-sys-color-on-surface-variant);
+    --text-muted: var(--md-sys-color-outline);
   }
 
   body {
-    background-color: var(--bg-primary);
-    color: var(--text-primary);
+    background-color: var(--md-sys-color-surface);
+    color: var(--md-sys-color-on-surface);
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
   }
 }
 
-/* Custom Scrollbar Terminal */
+/* 
+   Custom Scrollbar Material 3 (Pill-shaped)
+   Menggunakan shape-corner-full sesuai pedoman MD3.
+*/
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #08090c;
+  background: var(--md-sys-color-surface);
 }
 ::-webkit-scrollbar-thumb {
-  background: #1e2433;
-  border-radius: 4px;
+  background: var(--md-sys-color-outline-variant);
+  border-radius: var(--md-sys-shape-corner-full);
+  border: 2px solid var(--md-sys-color-surface); /* Ilusi padding */
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #334155;
+  background: var(--md-sys-color-outline);
 }
 
-/* Tabular Nums for Financial Accuracy */
+/* 
+   Tabular Nums - DIPERTAHANKAN
+   Sangat krusial untuk mencegah text pergerakan angka finansial bergeser 
+*/
 .font-mono-nums {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   font-variant-numeric: tabular-nums;
 }
 
-/* Subtle Terminal Grid Texture */
-.bg-terminal-grid {
-  background-size: 32px 32px;
-  background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-}
+/* CLASS .bg-terminal-grid TELAH DIHAPUS SEPENUHNYA */
