@@ -10,9 +10,10 @@ export default function SidebarToggle() {
   return (
     <button
       onClick={() => setSidebarOpen(!sidebarOpen)}
-      className="lg:hidden p-1.5 mr-2 rounded-lg bg-neutral-800 text-neutral-300 hover:text-white transition-colors focus:outline-none"
+      className="lg:hidden p-2 mr-2 rounded-[var(--md-sys-shape-corner-full)] bg-transparent hover:bg-[var(--md-sys-color-surface-container-highest)] text-[var(--md-sys-color-on-surface-variant)] hover:text-[var(--md-sys-color-on-surface)] transition-colors focus:outline-none"
+      aria-label="Toggle Navigation"
     >
-      <Icon icon="ph:list" width="20" />
+      <Icon icon="ph:list" width="24" />
     </button>
   );
 }
